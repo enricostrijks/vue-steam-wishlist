@@ -3,8 +3,10 @@
     <img alt="Steam logo" class="steamlogo" src="../assets/logo.png" />
     <Header />
     <form @submit.prevent="addNewWishlistItem">
-      <label>Voer naam nieuw wishlist item in</label>
+      <label for="newWishlistItem">Voer naam nieuw wishlist item in</label
+      ><br /><br />
       <input v-model="newWishlistItem" name="newWishlistItem" />
+      <br /><br />
       <button>Voeg nieuw wishlist item toe</button>
     </form>
     <SteamWishlist
@@ -91,5 +93,42 @@ export default {
 <style scoped>
 .steamlogo {
   max-width: 200px;
+}
+
+form {
+  display: block;
+}
+
+label {
+  top: 20rem;
+}
+
+input[name="newWishlistItem"] {
+  background-color: #3cbc8d;
+  outline-color: #3cbc8d;
+  color: white;
+  outline: none;
+  border: 3px solid rgb(0, 157, 255);
+  width: 20%;
+}
+
+button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 </style>

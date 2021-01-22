@@ -4,9 +4,10 @@
     v-bind:class="{ 'is-purchased': wishlists.purchased }"
   >
     <p>
-      <input type="checkbox" v-on:change="markPurchased" />
+      <input type="checkbox" @click="markPurchased(wishlists)" />
       {{ wishlists.title }}
     </p>
+    <button @click="removeWishlistItem(wishlists)" class="del">x</button>
   </div>
 </template>
 
@@ -15,9 +16,18 @@ export default {
   name: "SteamWishlistItem",
   props: ["wishlists"],
   methods: {
-    markPurchased() {
-      this.wishlists.purchased = !this.wishlists.purchased;
+    markPurchased(wishlists) {
+      wishlists.purchased = !wishlists.purchased;
     },
+  },
+  setup() {
+    function removeWishlistItem(wishlists) {
+      wishlists.value.splice(wishlists, 1);
+    }
+
+    return {
+      removeWishlistItem,
+    };
   },
 };
 </script>
